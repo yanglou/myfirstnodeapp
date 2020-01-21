@@ -1,0 +1,24 @@
+{
+  "name": "myfirstexpressapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanglou/myfirstnodeapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yanglou/myfirstnodeapp/issues"
+  },
+  "homepage": "https://github.com/yanglou/myfirstnodeapp#readme"
+}

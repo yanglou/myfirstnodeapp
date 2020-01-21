@@ -1,30 +1,26 @@
-var http = require('http');
-var url=require('url');
-var fs = require('fs');
+const express = require("express");
+const app = express();
+const path = require("path");
 
+const port = 8080;
+const options = {
+  root: path.join(__dirname, "")
+};
 
-http.createServer(function (req, res) {
-    var q = url.parse(req.url, true);
-    var filename = "." + q.pathname;
-    
-    if (path.pathname === '/') {
-        filename = './index.html'
-      } else if (path.pathname === '/about' || path.pathname === '/contact-me') {
-        filename = '.' + path.pathname + '.html'
-      } else {
-        filename = './404.html'
-      }
+app.get("/", function(req, res) {
+  res.sendFile("./index.html", options);
+});
 
+app.get("/about", function(req, res) {
+  res.sendFile("./about.html", options);
+});
 
-      fs.readFile(filename, (err, data) => {
-        if (err) {
-          res.writeHead(404, { 'Content-Type': 'text/html' })
-          return res.end('404 Not Found')
-        }
-  
-        res.writeHead(200, { 'Content-Type': 'text/html' })
-        res.write(data)
-        return res.end()
-      })
-    
-}).listen(8080);
+app.get("/contact-me", function(req, res) {
+  res.sendFile("./contact-me.html", options);
+});
+
+app.use((req, res, next) => {
+  res.status(404).sendFile("./404.html", options);
+});
+
+app.listen(port, function() {});
